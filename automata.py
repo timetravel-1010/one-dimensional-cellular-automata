@@ -1,4 +1,4 @@
-class automata():
+class Automata():
 
     def __init__(self, lhn, rhn, init_state):
         self.lhn = lhn
@@ -8,5 +8,9 @@ class automata():
     def get_state(self):
         return self.state
 
-    def set_state(self, state):
-        self.state = state
+    def set_state(self):#, state):
+        #self.state = state
+        if self.lhn == 0:
+            self.state = 1
+        else:
+            self.state = 0
