@@ -7,15 +7,17 @@ class Automata():
         self.rhn = rhn # right-hand neighbor
         self.state = init_state
     
-    def get_state(self):
+    def getState(self):
         return self.state
 
-    def set_state(self, rules):#, state):
-        #self.state = state
+    def setState(self, rules):
         #self.lhn = 1 if not self.lhn else self.lhn
         #self.rhn = 1 if not self.rhn else self.rhn
         current_state = int(f'{self.lhn}{self.state}{self.rhn}', 2)
         self.state = rules[current_state]
+
+    def setInitState(self, state):
+        self.state = state
     
     def set_lhn(self, lhn):
         self.lhn = lhn
