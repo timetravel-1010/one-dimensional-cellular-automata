@@ -3,11 +3,21 @@ import sys, os
 import numpy as np
 from automata import *
 
+rules = {
+    0: 1, #'000': None,
+    1: 1, #'001': None,
+    2: 0, #'010': None,
+    3: 0, #'011': None,
+    4: 0, #'100': None,
+    5: 0, #'101': None,
+    6: 1, #'110': None,
+    7: 1, #'111': None,
+}
 
 class Window():
 
     def __init__(self, n, size, ticks):
-        self.n = 100 # matriz nxn
+        self.n = n # matriz nxn
         self.WIDTH = size[0] #1300
         self.HEIGHT = size[1] #WIDTH / 2#WIDTH
         self.CELL_SIZE = self.WIDTH // n
@@ -30,27 +40,64 @@ class Window():
 
     """ crear la cuadrícula """
     def grid(self):
-        world = []
+        cells = []
         x = 0
         y = 0
         limite_horizontal = self.HEIGHT
         limite_vertical = self.WIDTH
         s = self.CELL_SIZE
-
-        cell = Automata(None, None, 0) # primera celda
-        world.append(cell)
+        val = False
         
+        #celdas primera fila
+        cells.append(Automata(0, 0, 1))
+        cells.append(Automata(1, 1, 0))
+        cells.append(Automata(0, 1, 1))
+        cells.append(Automata(1, 1, 1))
+        cells.append(Automata(1, 1, 1))
+        cells.append(Automata(1, 1, 1))
+        cells.append(Automata(1, 1, 1))
+        cells.append(Automata(1, 1, 1))
+        cells.append(Automata(1, 0, 1))
+        cells.append(Automata(1, 0, 0))
+
         for i in range(self.n):
-            r = pg.rect.Rect(x, y, s, s)
+            """ if i != 0:
+                cell = Automata(cells[i-1].get_state(), None, 1 if  val else 0)
+                cells.append(cell)
+                cells[i-1].set_rhn(cell.get_state())
+                val = not val
+            else:
+                cell = Automata(0, None, 1) # primera celda
+                cells.append(cell) """
+
             pg.draw.rect(
                 self.pantalla, 
-                self.colors.get(world[i].get_state()),
-                r
+                self.colors.get(cells[i].get_state()),
+                pg.rect.Rect(x, y, s, s)
             )
             x += s
-            cell = Automata(world[i].get_state(), None, 0)
-            cell.set_state()
-            world.append(cell)
+        x = 0
+        y = s
+        #recorrer todas las filas
+        for j in range(self.n-1):
+            for i in range(self.n):
+                cells[i].set_state(rules)
+                pg.draw.rect(
+                    self.pantalla, 
+                    self.colors.get(cells[i].get_state()),
+                    pg.rect.Rect(x, y, s, s)
+                )
+                if i >= 2:
+                    cells[i-1].set_lhn(cells[i-2].get_state())
+                    cells[i-1].set_rhn(cells[i].get_state())
+                elif i == 1:
+                    cells[i-1].set_rhn(cells[i].get_state())
+                """ elif i == (self.n - 1):
+                    cells[i].set_rhn(cells[0].get_state())
+                    cells[0].set_lhn(cells[i].get_state()) """
+                x += s
+            x = 0
+            y += s
 
         x = 0
         y = 0
@@ -79,5 +126,6 @@ class Window():
 
 
 if '__main__' == __name__:
-    w = Window(100, (1300, 1300 // 2), 3)
+    w = Window(10, (650, 650), 3)
+    #w = Window(100, (1300, 1300 // 2), 3)
     w.run()
