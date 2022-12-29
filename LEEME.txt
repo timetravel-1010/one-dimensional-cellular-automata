@@ -1,0 +1,43 @@
+Instrucciones para la ejecución del proyecto:
+
+1. Para el desarrollo del proyecto se utilizó el lenguaje de programación Python, por lo cual, debe instalar los requerimientos necesarios, en este caso son los siguientes:
+    
+    numpy==1.24.0
+    pygame==2.1.2
+
+Dichos requerimientos se encuentran especificados en el archivo requirements.txt, para instalarlos se debe ejecutar el siguiente comando:
+
+    pip install -r requirements.txt
+
+Se recomienda el uso de un ambiente virtual de python para aislar las dependencias utilizadas, para más información al respecto visitar alguna de las siguientes páginas web:
+
+    - https://docs.python.org/3/library/venv.html
+    - https://www.geeksforgeeks.org/python-virtual-environment/
+    - https://python.land/virtual-environments/virtualenv
+
+2. Una vez instaladas las dependencias se debe ejecutar el siguiente comando para mostrar la ventana del programa
+
+    python main.py
+
+
+Aclaraciones:
+
+    - La versión de Python que se utilizó para el desarrollo del proyecto fue la 3.10.6.
+
+    - El SO utilizado para el desarrollo del proyecto fue Linux Lite, no se ha probado la ejecución del proyecto en MacOS ni en Windows, por lo que se podrían generar inconvenienes al usar alguno de esos sistemas operativos.
+
+    - El administrador de paquetes utilizado para instalar las dependencias es pip, en caso de no tenerlo instalado puede consultar alguna de las siguientes páginas web:
+        
+        -> https://pip.pypa.io/en/stable/installation/
+        -> https://www.makeuseof.com/tag/install-pip-for-python/
+        -> https://www.neoguias.com/como-instalar-pip-python/#Como_instalar_PIP_en_Linux
+
+    - Para el desarrollo y ejecución del proyecto se utilizó un ambiente virtual creado con el módulo venv de python, algunos comandos de utilidad son los siguientes (en GNU/Linux):
+        
+        python -m venv .venv -> para crear el ambiente virtual en un nuevo directorio .venv
+
+        source .venv/bin/activate -> para activar el ambiente virtual
+
+        pip install -r requirements.txt -> para instalar las dependencias necesarias una vez activado el ambiente virtual
+
+        deactivate -> para desactivar el ambiente virtual
