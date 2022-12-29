@@ -41,3 +41,7 @@ Aclaraciones:
         pip install -r requirements.txt -> para instalar las dependencias necesarias una vez activado el ambiente virtual
 
         deactivate -> para desactivar el ambiente virtual
+    
+    - Enlace a un repositorio en GitHub con el código fuente:
+        
+        https://github.com/timetravel-1010/one-dimensional-cellular-automata
