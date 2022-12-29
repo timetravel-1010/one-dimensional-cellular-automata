@@ -1,5 +1,8 @@
+import copy
 
-
+""" 
+Automata: clase encargada de modelar un autómata celular
+"""
 class Automata():
 
     def __init__(self, lhn, rhn, init_state):
@@ -11,9 +14,7 @@ class Automata():
         return self.state
 
     def setState(self, rules):
-        #self.lhn = 1 if not self.lhn else self.lhn
-        #self.rhn = 1 if not self.rhn else self.rhn
-        current_state = int(f'{self.lhn}{self.state}{self.rhn}', 2)
+        current_state = int(f'{self.lhn}{self.state}{self.rhn}', 2) # regla en númeración decimal
         self.state = rules[current_state]
 
     def setInitState(self, state):
